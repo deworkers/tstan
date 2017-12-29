@@ -1,0 +1,79 @@
+<div class="content">
+    <div class="content-bg"></div>
+
+    <div class="wrap">
+        <div class="breadcrumbs">
+            <a href="#">Главная</a>
+            <em class="del"></em>
+            <span>Контакты</span>
+        </div>
+
+        <h1 class="content-title">Контакты</h1>
+        
+        <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+        <script type="text/javascript">
+            ymaps.ready(function () {
+                var myMap1 = new ymaps.Map('map1', {
+                        center: [56.83839850815732,60.685592228835986],
+                        zoom: 16,
+                        controls: []
+                    }, {
+                    }),
+                 
+                    place1 = new ymaps.Placemark([
+                            56.83839850815732,60.685592228835986
+                        ], {
+                        iconCaption: 'ул. Рассветная, д. 9А, оф. 150'
+                    }, {
+                        preset: 'islands#redDotIconWithCaption'
+                    });
+                var myMap2 = new ymaps.Map('map2', {
+                        center: [56.87245706782754,60.680200500000005],
+                        zoom: 16,
+                        controls: []
+                    }, {
+                    }),
+                    place2 = new ymaps.Placemark([
+                        56.87245706782754,60.680200500000005
+                        ], {
+                        iconCaption: 'ул. Краснодарская, 9'
+                    }, {
+                        preset: 'islands#redDotIconWithCaption'
+                    });
+                    myMap1.geoObjects.add(place1);
+                    myMap2.geoObjects.add(place2);
+                    myMap1.behaviors.disable('scrollZoom');
+                    myMap2.behaviors.disable('scrollZoom');
+                
+            }); 
+        </script>
+        <div class="cotact-list">
+            <div class="cotact-one">
+                <h3>Офис ООО ПК "Теплый Cтан"</h3>
+                <p><b>Юридический адрес:</b><br>
+                620062, г. Екатеринбург, ул. Рассветная, д. 9А, оф. 150</p>
+                <p><b>Почтовый адрес офиса:</b><br>
+                620072, г. Екатеринбург, ул. Рассветная, д. 9 А, оф. 150</p>
+                <p><b>Тел.:</b> (343) 286-35-73 (многоканальный), 
+                222-52-45, 222-52-47, 222-52-67</p>
+                <p><b>Факс:</b> (343) 222-52-45</p>
+                <p><b>E-mail:</b> <a href="#">tstan@tstan.ru</a></p>
+            </div>
+            <div class="cotact-one">
+                <h3>Склад ООО ПК "Теплый Cтан"</h3>
+                <p><b>Почтовый адрес склада:</b> 
+                620041, г. Екатеринбург, ул. Краснодарская, 9</p>
+                <p><b>Тел:</b> 8(992)027-01-76</p>
+                <p><b>E-mail:</b> <a href="#">tstan@tstan.ru</a></p>
+            </div>
+            <div class="contact-map" id="map1"></div>
+            <div class="contact-map" id="map2"></div>
+        </div>
+
+        <div class="conact-form">
+            
+        </div>
+    </div>
+
+
+</div>

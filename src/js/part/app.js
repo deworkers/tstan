@@ -2,11 +2,21 @@ var circleFixed = function() {
     // чудо магия выравнивания колец в сайдере
     if ( $(window).width() > 1180 ) {
         var n = ( $(window).width() - 1920 ) / 2;
-        $('.slider-overlay').css('left', n + 'px');
+        $('.slider-overlay, .head-inn-bottom__bg, .content-bg, .svg-box').css('left', n + 'px');
     } else {
         $('.slider-overlay').css('left', '-320px');
+        $('.head-inn-bottom__bg, .content-bg').css('left', '-460px');
+        $('.svg-box').css('left', '-340px');
     }
 }
+
+var cardBgHeight = function() {
+  height = $('.content-title--card').height();
+  $('.content-bg--card').height(height + 130);
+}
+
+
+
 
 $(document).ready(function() {
      $('.tab-list__one').on('click', function() {
@@ -31,8 +41,48 @@ $(document).ready(function() {
     });
 
     circleFixed();
+
+    $('.spoler-title ').on('click', function() {
+      $(this).toggleClass('open').next().slideToggle();
+    });
+
+    var galleryTop = new Swiper('.gallery-top', {
+      slidesPerView: 1,
+      spaceBetween: 10,
+    });
+
+    var galleryThumbs = new Swiper('.gallery-prev', {
+      spaceBetween: 5,
+      slidesPerView: 'auto',
+      touchRatio: 0.2,
+      slideToClickedSlide: true,
+    });
+
+    galleryTop.controller.control = galleryThumbs;
+    galleryThumbs.controller.control = galleryTop;
+
+    $('.gallery-prev .swiper-slide').on('click', function() {
+        $('.gallery-prev .swiper-slide').removeClass('active');
+        $(this).addClass('active');
+        idx = $(this).index();
+        galleryTop.slideTo(idx);
+    });
+
+    if ( $('.gallery-top').length > 0 ) {
+        galleryTop.on('slideChangeTransitionEnd', function () {
+            var idx = galleryTop.activeIndex;
+            galleryThumbs.slideTo(idx, 300);
+            $('.gallery-prev .swiper-slide').removeClass('active');
+            $('.gallery-prev .swiper-slide').eq(idx).addClass('active');
+        });
+    }
+
+    cardBgHeight();
+
+
 });
 
 $(window).resize(function() {
     circleFixed();
+    cardBgHeight();
 });
