@@ -1,5 +1,7 @@
+
+
 $(document).ready(function() {
-    
+    flexibility(document.documentElement);
 
     var scrollTo = function(pos) {
         var pos;

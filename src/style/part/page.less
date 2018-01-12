@@ -28,6 +28,7 @@ body {
 
 
 .head-menu {
+    -js-display: flex;
     display: flex;
     justify-content: space-between;
     height: 60px;
@@ -198,6 +199,7 @@ body {
         text-align: right;
         max-width: 1180px;
         left: ~'calc( (100% - 1180px) / 2)';
+        z-index: 100;
     }
 
     .swiper-pagination-bullet {
@@ -296,11 +298,13 @@ body {
 }
 
 .main-services {
+    -js-display: flex;
     display: flex;
     margin-bottom: 60px;
 }
 
 .main-service {
+    display: block;
     width: 25%;
     height: 345px;
     text-decoration: none;
@@ -665,6 +669,7 @@ a.footer__mail {
         background: @grey;
         font-size: 16px;
         outline: none;
+        transition: all 0.2s;
     }
     textarea {
         width: 100%;
@@ -689,11 +694,69 @@ a.footer__mail {
     }
 }
 
+.form-col {
+    width: 48%;
+
+    button {
+        width: 100%;
+        font-size: 18px;
+
+        &:after {
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            .sprite(@arrow);
+            transform: scale(0.55) rotate(180deg);
+        }
+    }
+}
+
 .form-send {
     color: #fff;
     border: none;
     height: 50px;
     padding: 0 60px;
     background: @orange;
+    cursor: pointer;
+}
+
+.conact-form {
+    background: #fff;
+    padding: 50px 0;
+}
+
+.form-inn {
+    width: 500px;
+    margin: 0 auto;
+    
+    .form-line {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    label {
+        margin-left: 20px;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    label.error {
+        display: none !important;
+    }
+
+    .form-col img {
+        border: 1px solid #ddd;
+    }
+}
+
+.quaptcha {
+    height: 50px !important;
+}
+
+.form-title {
+    color: @orange;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
